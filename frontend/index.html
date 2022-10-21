@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+<body>
+        <div class="head"> 
+            <h1> AI Question Answering </h1>
+        </div>
+        <div class="area">
+            <div class="btns">
+            <button class="ref" role="button">Refresh</button>
+            <button class="ref" id="ref2" role="button">Generate</button>
+            </div>
+            
+            <form action="/analyze" method="">
+            <div class="textinput"><textarea name="text" id="text" cols="30" rows="10" placeholder="Enter your text here"></textarea>
+            </div>
+            </form>
+            <div class="question">
+                <form class ="ask" action="ask">
+                <input type="text" name="question" id="question" placeholder="Enter your question here">
+                <button class = "btn" role="button">Predict</button>
+                </form>
+            </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
