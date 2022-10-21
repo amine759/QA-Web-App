@@ -42,6 +42,7 @@ h1 {
     width: 99%;
     height: 99%;
     background-color: white;
+    line-height: 1.9;
     resize: none;
     border: 12px solid #0a1b2e;
     border-radius: 10px 10px 10px 10px;
