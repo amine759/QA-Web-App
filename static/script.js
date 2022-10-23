@@ -28,15 +28,11 @@ const articles = [{
 }
 ]
 
-console.log(articles[0]['context']);
-
-const context = document.getElementById("text"); 
+const context = document.getElementById("context"); 
 const gen = document.getElementById("ref2"); 
 const refresh = document.getElementById("ref1"); 
-const textBorder = document.getElementById('text');
 const question = document.getElementById('question');
-
-textBorder.addEventListener('input',changeColor);
+context.addEventListener('input',changeColor);
 gen.addEventListener("click",generate,true); 
 refresh.addEventListener("click",refsh,true);
 
@@ -44,10 +40,10 @@ function refsh(){
     context.value = "" ;
     question.value = "" ;
     if(context.value.length<1) {
-        textBorder.style.borderColor = "#0a1b2e";
+        context.style.borderColor = "#0a1b2e";
     }
 }
-
+    
 function generate(){
     let elm =  articles[Math.floor(Math.random()*articles.length)];
     let paragraph = elm["context"]; 
@@ -56,7 +52,7 @@ function generate(){
     question.value = quest ; 
 
     if (context.value.length>1) {
-        textBorder.style.borderColor = "#93f729";
+        context.style.borderColor = "#93f729";
     }
 }
 

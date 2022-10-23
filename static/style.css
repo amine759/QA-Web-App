@@ -34,7 +34,6 @@ h1 {
 .textinput {
     margin: auto 70px 1px;
     position: relative;
-    border-radius: 10px 10px 10px 10px;
     height: 500px;
 }
 
@@ -132,7 +131,7 @@ button {
 }
 .question{
     width: 90%;
-    height: 20%;
+    height: 6%;
     margin-top: 40px;
     margin-left: 75px ;
 }
@@ -141,7 +140,7 @@ button {
     display: block;
 }
 
-form input {
+#question {
     outline: none;
     width: 63%;
     height: 35px;
@@ -155,6 +154,9 @@ form button {
     letter-spacing: 1px;
     width: 90px;
     position: absolute;
+}
+form {
+    height: 100%;
 }
 
 .textfield{

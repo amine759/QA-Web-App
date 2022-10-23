@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+
+    <title>Document</title>
+</head>
+<body>
+        <div class="head"> 
+            <h1> AI Question Answering </h1>
+        </div>
+        <div class="area">
+            <div class="btns">
+            <button class="ref" id = "ref1" role="button">Refresh</button>
+            <button class="ref" id="ref2" role="button">Generate</button>
+            </div>  
+            <div class="textinput">
+                <form action="{{ url_for('predict') }}" method="post">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}">
+                    <textarea class = "context" name="context" id="context" cols="30" rows="10" placeholder="Enter your text here" form="aform"></textarea>
+                </form>
+            </div>
+            <div class="question">
+                <form class ="ask" action="{{ url_for('predict') }}" method="post" id="aform">
+                    <input type="text" name="question" id="question" placeholder="Enter your question here">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}">
+                    <button class = "btn" role="button">Predict</button>
+                </form>
+                <form action="" method="get">
+                    <div class="field"><textarea class="textfield" name="text" cols="30" rows="10" placeholder="You will get the predicted answer here"></textarea>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
