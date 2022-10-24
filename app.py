@@ -34,12 +34,14 @@ def predict():
     question = request.form['question']
     if question:
         print(question)
-    '''model = pipeline('question-answering', model=model_name, tokenizer=model_name)
+    model = pipeline('question-answering', model=model_name, tokenizer=model_name)
     QA_input = { 
         'question': question,
         'context': context  
         }   
-    predicted_answer = model(QA_input)'''
-    return render_template("predict.html", context=context, question=question)
+    predicted_answer = model(QA_input)
+    print(predicted_answer)
+    return render_template('predict.html', context=context, question=question, predicted_answer=predicted_answer)
+
 if __name__ == '__main__':
     app.run(debug=True)
