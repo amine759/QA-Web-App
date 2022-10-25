@@ -37,6 +37,8 @@ gen.addEventListener("click",generate,true);
 refresh.addEventListener("click",refsh,true);
 
 function refsh(){ 
+    const answer = document.getElementById("answer");
+    answer.value="";
     context.value = "" ;
     question.value = "" ;
     if(context.value.length<1) {

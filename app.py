@@ -1,6 +1,5 @@
 import os
-from flask import Flask, render_template
-from flask import request
+from flask import Flask, render_template, request
 from transformers import pipeline
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField
@@ -28,19 +27,17 @@ def home():
 def predict():
     context_form = ContextForm()
     context = context_form.context.data
-
-    if context_form.validate_on_submit():
-        print(context_form.data)
     question = request.form['question']
-    if question:
-        print(question)
+
     model = pipeline('question-answering', model=model_name, tokenizer=model_name)
     QA_input = { 
         'question': question,
         'context': context  
         }   
-    predicted_answer = model(QA_input)
-    print(predicted_answer)
+
+    predicted_answer = model(QA_input).get('answer')
+    print(question)
+
     return render_template('predict.html', context=context, question=question, predicted_answer=predicted_answer)
 
 if __name__ == '__main__':

@@ -1,7 +1,10 @@
 {% extends 'index.html' %} 
 
 {% block content %}
-
-<h4>{{ predicted_answer }} fuck</h4>
+    {% if predicted_answer %}   
+    <div class="field"><textarea class="textfield" id = "answer" name="text" cols="30" rows="10">{{predicted_answer}}</textarea>
+    {% else %}
+    <div class="field"><textarea class="textfield" id = "answer" name="text" cols="30" rows="10">something is wrong</textarea>
+    {% endif %}
 
 {% endblock %}
