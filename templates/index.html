@@ -20,32 +20,37 @@
             <div class="textinput">
                 <form action="{{ url_for('predict') }}" method="post">
                     <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}">
-                    <textarea class = "context" name="context" id="context" cols="30" rows="10" placeholder="Enter your text here" form="aform">{% if context %}{{ context }}{% endif %}
-                    </textarea>
+                    <textarea class = "context" name="context" id="context" cols="30" rows="10" placeholder="Enter your text here" form="aform">{% if context %}{{context}}{% endif %}</textarea>
                 </form>
             </div>
             <div class="question">
                 <form class ="ask" action="{{ url_for('predict') }}" method="post" id="aform">
-                    {% if question %}
-                    <input type="text" name="question" id="question" value= '{{ question }}'>
-                    {% else %}
-                    <input type="text" name="question" id="question" placeholder="Enter your question here">
-                    {% endif %}
+                    <input type="text" name="question" id="question"  placeholder="Enter your question here" value= '{{ question }}'>
                     <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}">
                     <button class = "btn" role="button">Predict</button>
                 </form>
-                <form action="" method="get">   
-                    {% block content %}
-                        <div class="field"><textarea class="textfield" id = "answer" name="text" cols="30" rows="10" placeholder="You will get the predicted answer here"></textarea>
-                    {% endblock %}
+                <form action="" method="get">
+                    <div class="field"><textarea class="textfield" id = "answer" name="text" cols="30" rows="10" placeholder="You will get the predicted answer here">{% if predicted_answer %}{{predicted_answer}}{% endif %}</textarea>
                 </form>
             </div>
         </div>
-
     </div>
-    <div>
-    </div>
+    <div></div>
+    {% block js %}
+    {% if prediction_object %}
+    <script>
+        const pred = JSON.parse({{ prediction_object | tojson }}) ;
+        console.log(pred);
+        console.log(typeof(pred));
+        const article = document.getElementById("context");
+        const start = pred[0].start;
+        const end = pred[0].end;
+        window.onload = function(){
+            article.innerHTML = `${article.innerHTML.substring(0, start)} <span style='color:blue'>${article.innerHTML.substring(start,end)}</span> ${article.innerHTML.substring(end)}`;
+        }
+        </script>
+        {% endif %}
+    {% endblock %}
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-
 </body>
 </html>

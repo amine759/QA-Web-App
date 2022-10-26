@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json
 from transformers import pipeline
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField
@@ -34,11 +34,11 @@ def predict():
         'question': question,
         'context': context  
         }   
-
-    predicted_answer = model(QA_input).get('answer')
-    print(question)
-
-    return render_template('predict.html', context=context, question=question, predicted_answer=predicted_answer)
+    prediction = model(QA_input)
+    predicted_answer = prediction.get('answer')
+    prediction_object = json.dumps([{'start':prediction.get('start'),'end':prediction.get('end')}])
+    print(prediction_object)
+    return render_template('index.html', context=context, question=question, predicted_answer=predicted_answer,prediction_object=prediction_object)
 
 if __name__ == '__main__':
     app.run(debug=True)
