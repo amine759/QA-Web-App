@@ -1,8 +1,8 @@
 # General Question Answering web application
-Model used : electra-base-squad2
+Model used : electra-base-squad2 \\
 Extractive QA : getting answer from a given context
 ## To run : 
-###### First, make sure heroku is installed in your device where the model is deployed [heroku.com](https://devcenter.heroku.com/)
+First, make sure heroku is installed in your device where the model is deployed [heroku.com](https://devcenter.heroku.com/articles/getting-started-with-python)
 ### install : 
 ```shell
 git clone https://github.com/amine759/QA-Web-App.git
