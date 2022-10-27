@@ -40,13 +40,12 @@
     {% if prediction_object %}
     <script>
         const pred = JSON.parse({{ prediction_object | tojson }}) ;
-        console.log(pred);
-        console.log(typeof(pred));
-        const article = document.getElementById("context");
+        const article = document.querySelector("#context");
         const start = pred[0].start;
         const end = pred[0].end;
-        window.onload = function(){
-            article.innerHTML = `${article.innerHTML.substring(0, start)} <span style='color:blue'>${article.innerHTML.substring(start,end)}</span> ${article.innerHTML.substring(end)}`;
+        window.onload = () => {
+            article.focus();
+            article.setSelectionRange(start, end);
         }
         </script>
         {% endif %}
