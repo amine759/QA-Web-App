@@ -28,17 +28,21 @@ def predict():
     context_form = ContextForm()
     context = context_form.context.data
     question = request.form['question']
-
     model = pipeline('question-answering', model=model_name, tokenizer=model_name)
-    QA_input = { 
-        'question': question,
-        'context': context  
-        }   
-    prediction = model(QA_input)
-    predicted_answer = prediction.get('answer')
-    prediction_object = json.dumps([{'start':prediction.get('start'),'end':prediction.get('end')}])
-    print(prediction_object)
-    return render_template('index.html', context=context, question=question, predicted_answer=predicted_answer,prediction_object=prediction_object)
+    
+    if question and context :
+        QA_input = { 
+            'question': question,
+            'context': context  
+            }
+        prediction = model(QA_input)
+        predicted_answer = prediction.get('answer')
+        prediction_object = json.dumps([{'start':prediction.get('start'),'end':prediction.get('end')}])
+        print(prediction_object)
+        return render_template('index.html', context=context, question=question, predicted_answer=predicted_answer,prediction_object=prediction_object)
+    else:
+        return render_template('index.html',predicted_answer="what the heck are you willing to get answer for?")
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
