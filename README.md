@@ -2,7 +2,7 @@
 ##### Model used : deepset/electra-base-squad2
 ##### Extractive QA : predicting answer from a given context
 ## To run : 
-First, make sure heroku CLI is installed in your device where the model is deployed [heroku.com](https://devcenter.heroku.com/articles/getting-started-with-python)
+First, make sure heroku CLI is installed in your device [install heroku](https://devcenter.heroku.com/articles/getting-started-with-python)
 
 ```shell
 git clone https://github.com/amine759/QA-Web-App.git
@@ -18,7 +18,7 @@ The app contains in the root directory a Procfile like this :
 web: python app.py
 ```
 This way you declare what command should be executed to start the app.
-if you are running on windows you need an additionnal Procfile.windows for details (cz I'm lazy) checkout [heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-python#define-a-procfile)
+if you are running on windows you need an additionnal Procfile.windows for details (cz I'm lazy) check out [Procfile on windows](https://devcenter.heroku.com/articles/getting-started-with-python#define-a-procfile)
 
 Activate virtual environment and install dependencies : 
 ```shell
