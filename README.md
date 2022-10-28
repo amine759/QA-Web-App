@@ -1,14 +1,14 @@
 # General Question Answering web application
-Model used : electra-base-squad2 \\
-Extractive QA : getting answer from a given context
+##### Model used : deepset/electra-base-squad2
+##### Extractive QA : predicting answer from a given context
 ## To run : 
-First, make sure heroku is installed in your device where the model is deployed [heroku.com](https://devcenter.heroku.com/articles/getting-started-with-python)
-### install : 
+First, make sure heroku CLI is installed in your device where the model is deployed [heroku.com](https://devcenter.heroku.com/articles/getting-started-with-python)
+
 ```shell
 git clone https://github.com/amine759/QA-Web-App.git
 cd QA-Web-App/
 ```
-### To run the app on heroku : 
+### To run the app with heroku :
 ```shell 
 heroku create
 git push heroku main
