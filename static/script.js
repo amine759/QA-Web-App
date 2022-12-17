@@ -56,7 +56,7 @@ function refsh(){
         context.style.borderColor = "#0a1b2e";
     }
 }
-        
+
 function generate(){
     let elm =  articles[Math.floor(Math.random()*articles.length)];
     context.value = elm["context"] ;

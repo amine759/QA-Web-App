@@ -39,7 +39,7 @@
     {% block js %}
     {% if prediction_object %}
     <script>
-        const pred = JSON.parse({{ prediction_object | tojson }}) ;
+        const pred = JSON.parse({{ prediction_object | tojson }});
         const article = document.querySelector("#context");
         const start = pred[0].start;
         const end = pred[0].end;

@@ -10,14 +10,16 @@ class ContextForm(FlaskForm):
     context = TextAreaField("Context", validators=[DataRequired()])
 
 csrf = CSRFProtect()
+
 def create_app():
+    model_name = "deepset/electra-base-squad2"
+    model = pipeline('question-answering', model=model_name, tokenizer=model_name)
     app = Flask(__name__)
     csrf.init_app(app)
     app.config['SECRET_KEY'] = os.urandom(24)
-    return app
+    return app, model
 
-app = create_app()
-model_name = "deepset/electra-base-squad2"
+app,model = create_app()
 
 @app.route('/')
 def home():
@@ -28,12 +30,11 @@ def predict():
     context_form = ContextForm()
     context = context_form.context.data
     question = request.form['question']
-    model = pipeline('question-answering', model=model_name, tokenizer=model_name)
-    
+
     if question and context :
-        QA_input = { 
+        QA_input = {
             'question': question,
-            'context': context  
+            'context': context
             }
         prediction = model(QA_input)
         predicted_answer = prediction.get('answer')
@@ -41,7 +42,7 @@ def predict():
         print(prediction_object)
         return render_template('index.html', context=context, question=question, predicted_answer=predicted_answer,prediction_object=prediction_object)
     else:
-        return render_template('index.html',predicted_answer="what the heck are you willing to get answer for?")
+        return render_template('index.html',predicted_answer="what the heck are you willing to get an answer for?")
     
 
 if __name__ == '__main__':
